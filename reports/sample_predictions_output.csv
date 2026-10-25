@@ -1,0 +1,4 @@
+gender,Near_Location,Partner,Promo_friends,Phone,Contract_period,Group_visits,Age,Avg_additional_charges_total,Month_to_end_contract,Lifetime,Avg_class_frequency_total,Avg_class_frequency_current_month,churn_probability,predicted_churn,decision_threshold
+0,1,0,0,1,12,1,31,113.2029376510582,12.0,7,1.9229360550418195,1.9102435215196407,0.0005495206884537112,0,0.22
+0,1,1,0,1,1,0,28,129.44847933200614,1.0,2,1.8590983473832376,1.7365018916344137,0.23902291941658899,1,0.22
+0,1,1,1,1,12,1,33,62.66986319123829,12.0,2,3.2056327682385,3.3572145130526616,0.0005430918263343378,0,0.22

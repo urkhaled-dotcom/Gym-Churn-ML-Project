@@ -1,0 +1,147 @@
+{
+  "project_title_ar": "نظام تحليل مخاطر انسحاب المشتركين من النادي الرياضي باستخدام تعلم الآلة",
+  "dataset_file": "data/gym_churn_us.csv",
+  "audit": {
+    "n_rows": 4000,
+    "n_columns_total": 14,
+    "n_features_original": 13,
+    "missing_cells_total": 0,
+    "duplicate_rows": 0,
+    "target_counts": {
+      "0": 2939,
+      "1": 1061
+    },
+    "target_rate": 0.26525,
+    "all_features_numeric": true,
+    "feature_names": [
+      "gender",
+      "Near_Location",
+      "Partner",
+      "Promo_friends",
+      "Phone",
+      "Contract_period",
+      "Group_visits",
+      "Age",
+      "Avg_additional_charges_total",
+      "Month_to_end_contract",
+      "Lifetime",
+      "Avg_class_frequency_total",
+      "Avg_class_frequency_current_month"
+    ]
+  },
+  "data_checks": {
+    "binary_columns_values_valid": true,
+    "contract_period_values": [
+      1,
+      6,
+      12
+    ],
+    "remaining_months_never_exceed_contract": true,
+    "features_directly_named_as_target_or_churn": []
+  },
+  "split": {
+    "train_rows": 3200,
+    "test_rows": 800,
+    "test_size": 0.2,
+    "stratified": true,
+    "random_state": 42,
+    "cv_folds": 3
+  },
+  "best_model": "HistGradientBoosting",
+  "best_feature_set": "engineered",
+  "cv_best_mean_pr_auc": 0.9732084498035323,
+  "cv_best_mean_roc_auc": 0.9878608648916516,
+  "best_hyperparameters": {
+    "model__learning_rate": 0.08,
+    "model__max_iter": 160,
+    "model__max_leaf_nodes": 7
+  },
+  "threshold_selection": {
+    "method": "maximize F2 using nested OOF probabilities from training split only; each outer validation fold is excluded from hyperparameter selection",
+    "selected_threshold": 0.22,
+    "oof_metrics": {
+      "threshold": 0.22,
+      "accuracy": 0.9496875,
+      "balanced_accuracy": 0.9495803855613154,
+      "precision": 0.8722943722943723,
+      "recall": 0.9493521790341578,
+      "f1": 0.9091934574168077,
+      "f2": 0.9328703703703703,
+      "roc_auc": 0.9894704356064308,
+      "pr_auc_average_precision": 0.9773238134858389,
+      "tn": 2233,
+      "fp": 118,
+      "fn": 43,
+      "tp": 806
+    }
+  },
+  "final_test_metrics_selected_threshold": {
+    "threshold": 0.22,
+    "accuracy": 0.95375,
+    "balanced_accuracy": 0.9489314593762033,
+    "precision": 0.8923766816143498,
+    "recall": 0.9386792452830188,
+    "f1": 0.9149425287356322,
+    "f2": 0.9290382819794585,
+    "roc_auc": 0.9904055962007445,
+    "pr_auc_average_precision": 0.9796102004557791,
+    "tn": 564,
+    "fp": 24,
+    "fn": 13,
+    "tp": 199
+  },
+  "final_test_metrics_default_threshold_0_5": {
+    "threshold": 0.5,
+    "accuracy": 0.96375,
+    "balanced_accuracy": 0.9436689770247721,
+    "precision": 0.9597989949748744,
+    "recall": 0.9009433962264151,
+    "f1": 0.9294403892944039,
+    "f2": 0.9121298949379179,
+    "roc_auc": 0.9904055962007445,
+    "pr_auc_average_precision": 0.9796102004557791,
+    "tn": 580,
+    "fp": 8,
+    "fn": 21,
+    "tp": 191
+  },
+  "test_confusion_matrix": [
+    [
+      564,
+      24
+    ],
+    [
+      13,
+      199
+    ]
+  ],
+  "model_path": "models/gym_churn_model.joblib",
+  "important_interpretation_note": "لأن الملف لا يحتوي على عمود تاريخ/لقطة زمنية لكل عضو، فإن اختبارًا عشوائيًا طبقيًا يقيّم التنبؤ بتصنيف الانسحاب المرفق، ولا يثبت وحده أداء إنذار مبكر زمني على بيانات مستقبلية أو نادٍ آخر.",
+  "classification_report": {
+    "0": {
+      "precision": 0.9774696707105719,
+      "recall": 0.9591836734693877,
+      "f1-score": 0.9682403433476395,
+      "support": 588.0
+    },
+    "1": {
+      "precision": 0.8923766816143498,
+      "recall": 0.9386792452830188,
+      "f1-score": 0.9149425287356322,
+      "support": 212.0
+    },
+    "accuracy": 0.95375,
+    "macro avg": {
+      "precision": 0.9349231761624608,
+      "recall": 0.9489314593762033,
+      "f1-score": 0.9415914360416359,
+      "support": 800.0
+    },
+    "weighted avg": {
+      "precision": 0.9549200286000731,
+      "recall": 0.95375,
+      "f1-score": 0.9541164224754576,
+      "support": 800.0
+    }
+  }
+}
